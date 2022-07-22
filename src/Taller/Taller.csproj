@@ -1,11 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.17"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.12"/>
+    <PackageReference Include="System.Data.Entity.Repository" Version="2.0.0"/>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.1"/>
+    <PackageReference Include="System.Regex" Version="1.0.0"/>
+    <PackageReference Include="EFCore.CheckConstraints" Version="5.0.1"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.12"/>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.NetTopologySuite" Version="5.0.1"/>
+    <PackageReference Include="System.ServiceModel.Primitives" Version="4.9.0"/>
+    <PackageReference Include="System.ServiceModel.Web" Version="1.0.0"/>
   </ItemGroup>
-
 </Project>

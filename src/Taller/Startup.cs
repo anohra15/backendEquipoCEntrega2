@@ -7,10 +7,15 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using RCVUcabBackend.Persistence.Database;
+using RCVUcabBackend.Persistence.DAOs.Implementations;
+using RCVUcabBackend.Persistence.DAOs.Interfaces;
+
 
 namespace Taller
 {
@@ -28,6 +33,15 @@ namespace Taller
         {
 
             services.AddControllers();
+            services.AddDbContext<RCVDbContext>(options => 
+                options.UseNpgsql(
+                    Configuration["DBConnectionString"], 
+                    x => x.UseNetTopologySuite()
+                ).UseValidationCheckConstraints().
+                    UseEnumCheckConstraints()
+            );
+            services.AddTransient<IRCVDbContext, RCVDbContext>();
+            services.AddTransient<ITallerDAO, TallerDAO>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Taller", Version = "v1" });
